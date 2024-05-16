@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="p-20 space-y-6">
+    <div className="px-20 py-10 space-y-6">
       <h1 className="text-5xl text-sky-500 font-bold text-opacity-80">
         Expert System
       </h1>

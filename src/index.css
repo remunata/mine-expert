@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply bg-gray-100;
+    }
+}
+
 .btn-primary {
-    @apply bg-sky-500 text-white font-semibold text-lg px-5 py-2 rounded-md
+    @apply bg-sky-500 text-white font-semibold text-lg px-5 py-2 rounded-md shadow-md
     hover:bg-sky-600 focus:bg-sky-700 transition-all ease-in-out;
+}
+
+.card-white {
+    @apply bg-white px-5 py-10 rounded-md flex flex-col items-center gap-y-3 shadow-md;
 }
