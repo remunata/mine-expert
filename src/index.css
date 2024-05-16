@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-primary {
+    @apply bg-sky-500 text-white font-semibold text-lg px-5 py-2 rounded-md
+    hover:bg-sky-600 focus:bg-sky-700 transition-all ease-in-out;
+}
