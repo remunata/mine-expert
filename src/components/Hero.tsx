@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <div className="px-20 py-10" id="hero">
       <h1 className="text-4xl font-bold">How it works?</h1>
-      <p className="mt-3 font-lg">
+      <p className="mt-3 text-lg">
         Gain insight into evaluating investment risk effectively
       </p>
       <div className="grid grid-cols-3 mt-8 gap-x-20">

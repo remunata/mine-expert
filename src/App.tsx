@@ -3,6 +3,7 @@ import { DataContext, DataStruct } from "./DataContext";
 import Form from "./components/Form";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Result from "./components/Result";
 
 export default function App() {
   const [data, setData] = useState<DataStruct>({
@@ -20,6 +21,7 @@ export default function App() {
       <Hero />
       <DataContext.Provider value={{ data, setData }}>
         <Form />
+        <Result />
       </DataContext.Provider>
     </div>
   );
