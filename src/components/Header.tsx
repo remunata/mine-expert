@@ -12,7 +12,7 @@ export default function Header() {
         Evaluasi kelayakan dengan cepat dan akurat. <br /> Mulai tingkatkan
         keuntungan anda hari ini.
       </p>
-      <button className="btn-primary">Get Started</button>
+      <button className="btn-primary"><a href="#hero">Get Started</a></button>
     </div>
   );
 }

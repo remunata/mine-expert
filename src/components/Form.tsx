@@ -11,6 +11,9 @@ export default function Form() {
         <br />
         obtain an accurate investment feasibility evaluation
       </p>
+      <form>
+        
+      </form>
     </div>
   );
 }

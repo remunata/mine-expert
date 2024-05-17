@@ -5,7 +5,7 @@ import HeroCard from "./HeroCard";
 
 export default function Hero() {
   return (
-    <div className="px-20 py-10">
+    <div className="px-20 py-10" id="hero">
       <h1 className="text-4xl font-bold">How it works?</h1>
       <p className="mt-3 font-lg">
         Gain insight into evaluating investment risk effectively
