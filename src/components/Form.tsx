@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDataContext } from "../DataContext";
 import { useResultContext } from "../ResultContext";
 import evaluate from "../inferences/Inference";
@@ -6,6 +7,7 @@ import InputForm from "./InputForm";
 export default function Form() {
   const { data, setData } = useDataContext();
   const { setResult } = useResultContext();
+  const [showError, setShowError] = useState<boolean>(false);
 
   const setInputData = (inputData: number, label: string) => {
     switch (label) {
@@ -37,6 +39,16 @@ export default function Form() {
   };
 
   const submit = async () => {
+    let property: keyof typeof data;
+    for (property in data) {
+      if (data[property] <= 0) {
+        setResult("");
+        setShowError(true);
+        return;
+      }
+    }
+
+    setShowError(false);
     const isGoodInvestment = await evaluate(data);
     setResult(isGoodInvestment);
   };
@@ -110,6 +122,7 @@ export default function Form() {
       >
         Submit Form
       </button>
+      {showError && <div className="text-red-600 mt-5">Input tidak boleh negatif atau nol</div>}
     </div>
   );
 }
