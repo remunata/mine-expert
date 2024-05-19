@@ -1,8 +1,11 @@
 import { useDataContext } from "../DataContext";
+import { useResultContext } from "../ResultContext";
+import evaluate from "../inferences/Inference";
 import InputForm from "./InputForm";
 
 export default function Form() {
   const { data, setData } = useDataContext();
+  const { setResult } = useResultContext();
 
   const setInputData = (inputData: number, label: string) => {
     switch (label) {
@@ -31,6 +34,11 @@ export default function Form() {
         break;
       }
     }
+  };
+
+  const submit = async () => {
+    const isGoodInvestment = await evaluate(data);
+    setResult(isGoodInvestment);
   };
 
   return (
@@ -89,7 +97,11 @@ export default function Form() {
           setData={setInputData}
         />
       </form>
-      <button type="submit" className="btn-primary mt-10">
+      <button
+        type="submit"
+        className="btn-primary mt-10"
+        onClick={() => submit()}
+      >
         Submit Form
       </button>
     </div>

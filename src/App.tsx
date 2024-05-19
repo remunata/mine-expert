@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Result from "./components/Result";
+import { ResultContext } from "./ResultContext";
 
 export default function App() {
   const [data, setData] = useState<DataStruct>({
@@ -15,13 +16,17 @@ export default function App() {
     returnValue: 0,
   });
 
+  const [result, setResult] = useState<string>("");
+
   return (
     <div className="w-full py-10">
       <Header />
       <Hero />
       <DataContext.Provider value={{ data, setData }}>
-        <Form />
-        <Result />
+        <ResultContext.Provider value={{ result, setResult }}>
+          <Form />
+          <Result />
+        </ResultContext.Provider>
       </DataContext.Provider>
     </div>
   );

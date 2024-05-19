@@ -1,7 +1,10 @@
+import { useResultContext } from "../ResultContext";
 import Valid from "../svgs/Valid";
 
 export default function Result() {
-  return (
+  const { result } = useResultContext();
+
+  return result === "layak" ? (
     <div className="px-20 py-10">
       <h1 className="text-5xl font-bold">Hasil Analisis</h1>
       <p className="text-lg mt-3">
@@ -17,5 +20,7 @@ export default function Result() {
         <Valid className="h-52 w-52 mt-20 text-sky-600" />
       </div>
     </div>
+  ) : (
+    result === "tidakLayak" && <div>Tidak layak</div>
   );
 }
