@@ -2,11 +2,12 @@ interface InputFormProps {
   label: string;
   name: string;
   unit: string;
+  placeholder: string;
   data: number,
   setData: (data: number, label: string) => void;
 }
 
-export default function InputForm({ label, name, unit, data, setData }: InputFormProps) {
+export default function InputForm({ label, name, unit, placeholder, data, setData }: InputFormProps) {
   return (
     <div className="space-y-1">
       <label className="text-sm text-gray-700" htmlFor={name}>
@@ -16,6 +17,7 @@ export default function InputForm({ label, name, unit, data, setData }: InputFor
         <input
           type="number"
           name={name}
+          placeholder={placeholder}
           value={data == 0 ? "" : data}
           onChange={(e) => setData(Number(e.target.value), name)}
           className="w-4/5 px-3 py-2 text-lg border border-gray-500 rounded-md rounded-r-none"

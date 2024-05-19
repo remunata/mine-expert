@@ -58,27 +58,31 @@ export default function Form() {
           label="Estimasi Jumlah Produk"
           name="jumlahProduksi"
           unit="Ton / Tahun"
+          placeholder="eg. 300"
           data={data.jumlahProduksi}
           setData={setInputData}
         />
         <InputForm
           label="Biaya Operasional"
           name="biayaOperasional"
-          unit="Rp / Tahun"
+          unit="Juta / Tahun"
+          placeholder="eg. 200"
           data={data.biayaOperasional}
           setData={setInputData}
         />
         <InputForm
           label="Harga Jual"
           name="hargaJual"
-          unit="Rp / Ton"
+          unit="Juta / Ton"
+          placeholder="eg. 30"
           data={data.hargaJual}
           setData={setInputData}
         />
         <InputForm
           label="Biaya Investasi Awal"
           name="biayaInvestasi"
-          unit="Rp"
+          unit="Milyar"
+          placeholder="eg. 400"
           data={data.biayaInvestasi}
           setData={setInputData}
         />
@@ -86,6 +90,7 @@ export default function Form() {
           label="Estimasi Cadangan Mineral"
           name="estimasiCadangan"
           unit="Ton"
+          placeholder="eg. 3800"
           data={data.estimasiCadangan}
           setData={setInputData}
         />
@@ -93,6 +98,7 @@ export default function Form() {
           label="Tingkat Pengembalian yang Diharapkan"
           name="returnValue"
           unit="%"
+          placeholder="eg. 25"
           data={data.returnValue}
           setData={setInputData}
         />
