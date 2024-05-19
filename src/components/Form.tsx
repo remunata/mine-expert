@@ -5,8 +5,8 @@ import evaluate from "../inferences/Inference";
 import InputForm from "./InputForm";
 
 export default function Form() {
-  const { data, setData } = useDataContext();
-  const { setResult } = useResultContext();
+  const { data, setData, cfValues } = useDataContext();
+  const { setResult, setCf } = useResultContext();
   const [showError, setShowError] = useState<boolean>(false);
 
   const setInputData = (inputData: number, label: string) => {
@@ -48,9 +48,16 @@ export default function Form() {
       }
     }
 
+    if (cfValues.length < 6) {
+      setResult("");
+      setShowError(true);
+      return;
+    }
+
     setShowError(false);
-    const isGoodInvestment = await evaluate(data);
-    setResult(isGoodInvestment);
+    const [result, cf] = await evaluate(data, cfValues);
+    setResult(String(result));
+    setCf(Number(cf));
   };
 
   return (
@@ -65,7 +72,7 @@ export default function Form() {
         <br />
         obtain an accurate investment feasibility evaluation
       </p>
-      <form className="grid grid-cols-2 gap-x-20 gap-y-8 mt-10">
+      <form className="flex flex-col gap-y-8 mt-10">
         <InputForm
           label="Estimasi Jumlah Produk"
           name="jumlahProduksi"
@@ -73,6 +80,7 @@ export default function Form() {
           placeholder="eg. 300"
           data={data.jumlahProduksi}
           setData={setInputData}
+          cfIndex={0}
         />
         <InputForm
           label="Biaya Operasional"
@@ -81,6 +89,7 @@ export default function Form() {
           placeholder="eg. 200"
           data={data.biayaOperasional}
           setData={setInputData}
+          cfIndex={1}
         />
         <InputForm
           label="Harga Jual"
@@ -89,6 +98,7 @@ export default function Form() {
           placeholder="eg. 30"
           data={data.hargaJual}
           setData={setInputData}
+          cfIndex={2}
         />
         <InputForm
           label="Biaya Investasi Awal"
@@ -97,6 +107,7 @@ export default function Form() {
           placeholder="eg. 400"
           data={data.biayaInvestasi}
           setData={setInputData}
+          cfIndex={3}
         />
         <InputForm
           label="Estimasi Cadangan Mineral"
@@ -105,6 +116,7 @@ export default function Form() {
           placeholder="eg. 3800"
           data={data.estimasiCadangan}
           setData={setInputData}
+          cfIndex={4}
         />
         <InputForm
           label="Tingkat Pengembalian yang Diharapkan"
@@ -113,6 +125,7 @@ export default function Form() {
           placeholder="eg. 25"
           data={data.returnValue}
           setData={setInputData}
+          cfIndex={5}
         />
       </form>
       <button
@@ -122,7 +135,7 @@ export default function Form() {
       >
         Submit Form
       </button>
-      {showError && <div className="text-red-600 mt-5">Input tidak boleh negatif atau nol</div>}
+      {showError && <div className="text-red-600 mt-5">Input tidak valid</div>}
     </div>
   );
 }
