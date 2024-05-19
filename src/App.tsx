@@ -15,15 +15,17 @@ export default function App() {
     estimasiCadangan: 0,
     returnValue: 0,
   });
+  const [cfValues, setCfValues] = useState<number[]>([]);
 
   const [result, setResult] = useState<string>("");
+  const [cf, setCf] = useState<number>(0);
 
   return (
     <div className="w-full py-10">
       <Header />
       <Hero />
-      <DataContext.Provider value={{ data, setData }}>
-        <ResultContext.Provider value={{ result, setResult }}>
+      <DataContext.Provider value={{ data, cfValues, setData, setCfValues }}>
+        <ResultContext.Provider value={{ result, cf, setResult, setCf }}>
           <Form />
           <Result />
         </ResultContext.Provider>

@@ -3,7 +3,7 @@ import Valid from "../svgs/Valid";
 import Error from "../svgs/Error";
 
 export default function Result() {
-  const { result } = useResultContext();
+  const { result, cf } = useResultContext();
 
   return result === "layak" ? (
     <div className="px-20 py-10">
@@ -19,6 +19,7 @@ export default function Result() {
           LAYAK
         </h2>
         <Valid className="h-52 w-52 mt-20 text-sky-600" />
+        <span className="mt-10 text-lg">Dengan tingkat kepastian: {cf}</span>
       </div>
     </div>
   ) : (
@@ -36,6 +37,7 @@ export default function Result() {
             TIDAK LAYAK
           </h2>
           <Error className="h-52 w-52 mt-20 text-red-600" />
+          <span className="mt-10 text-lg">Dengan tingkat kepastian: {cf}</span>
         </div>
       </div>
     )

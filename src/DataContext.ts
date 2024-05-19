@@ -11,12 +11,16 @@ export type DataStruct = {
 
 export type DataContent = {
   data: DataStruct;
+  cfValues: number[];
   setData: (data: DataStruct) => void;
+  setCfValues: (values: number[]) => void;
 };
 
 export const DataContext = createContext<DataContent>({
   data: <DataStruct>{},
+  cfValues: [],
   setData: () => {},
+  setCfValues: () => {},
 });
 
 export const useDataContext = () => useContext(DataContext);
